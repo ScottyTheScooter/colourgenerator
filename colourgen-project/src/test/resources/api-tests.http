@@ -1,0 +1,18 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+### Health Check
+GET http://localhost:8080/api/health
+
+### Get API information
+GET http://localhost:8080/api/info
+
+### All Generated Palettes
+GET http://localhost:8080/api/generated-palettes
+
+###  Palette by ID
+GET http://localhost:8080/api/generated-palettes/2
+
+### Only monochrome Objects
+GET http://localhost:8080/api/generated-palettes/achrome-colors
