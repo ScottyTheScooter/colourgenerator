@@ -36,7 +36,7 @@ public class GeneratedPalette {
     public String getRgbCode() { return rgbCode; }
     public void setRgbCode(String rgbCode) { this.rgbCode = rgbCode; }
 
-    public String hslCode() { return hslCode; }
+    public String getHslCode() { return hslCode; }
     public void setHslCode(String hslCode) { this.hslCode = hslCode; }
 
     public String getHsvCode() { return hsvCode; }
