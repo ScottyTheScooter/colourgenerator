@@ -1,5 +1,6 @@
 package de.dhbwravensburg.webeng.colourgenproject.service;
 
+import de.dhbwravensburg.webeng.colourgenproject.exception.GeneratedPaletteNotFoundException;
 import de.dhbwravensburg.webeng.colourgenproject.model.GeneratedPalette;
 import de.dhbwravensburg.webeng.colourgenproject.repository.GeneratedPaletteRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class GeneratedPaletteService {
 
     public Optional<GeneratedPalette> findById(Long id) {
         return repository.findById(id);
+    }
+    public GeneratedPalette getOrThrow(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new GeneratedPaletteNotFoundException(id));
     }
 
 //    public Optional<GeneratedPalette> findAchrome() {
@@ -48,10 +53,10 @@ public class GeneratedPaletteService {
 
     public boolean delete(Long id) {
         if(!repository.existsById(id)) {
-            return false;
+            throw new GeneratedPaletteNotFoundException(id);
         }
         repository.deleteById(id);
-        return true;
+        return false;
     }
 
 //    public GeneratedPaletteService() {

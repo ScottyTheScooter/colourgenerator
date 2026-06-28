@@ -72,3 +72,24 @@ PATCH http://localhost:8080/api/generated-palettes/1/achrome
 
 ### GET all elements with Achrome colours
 GET http://localhost:8080/api/generated-palettes?achrome=true
+
+### POST - Validation errors
+POST http://localhost:8080/api/generated-palettes
+Content-Type: application/json
+
+{
+  "achrome": true,
+  "cmykValue": "cmyk(0,0,0,50)",
+  "colorName": "",
+  "hexCode": "#",
+  "hslCode": "hsl(0, 0, 50)",
+  "hsvCode": "hsv(0, 0, 50)",
+  "rgbCode": "rgb(126,126,126)",
+  "seedHexCode": ""
+}
+
+### GET 404 with ProblemDetail
+GET http://localhost:8080/api/generated-palettes/9999
+
+### DELETE with ProblemDetail
+DELETE http://localhost:8080/api/generated-palettes/9999
