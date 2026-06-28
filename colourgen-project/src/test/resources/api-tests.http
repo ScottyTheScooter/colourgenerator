@@ -1,3 +1,5 @@
+// Round one of tests
+
 ### GET request to example server
 GET https://examples.http-client.intellij.net/get
     ?generated-in=IntelliJ IDEA
@@ -14,5 +16,59 @@ GET http://localhost:8080/api/generated-palettes
 ###  Palette by ID
 GET http://localhost:8080/api/generated-palettes/2
 
+// This one's broken. Path doesn't exist anymore?
 ### Only monochrome Objects
 GET http://localhost:8080/api/generated-palettes/achrome-colors
+
+
+// Round two of tests
+### GET all
+GET http://localhost:8080/api/generated-palettes
+
+### GET by ID > Success
+GET http://localhost:8080/api/generated-palettes/1
+
+### GET by ID > 404
+GET http://localhost:8080/api/generated-palettes/9999
+
+### POST - Create new Object
+POST http://localhost:8080/api/generated-palettes
+Content-Type: application/json
+
+{
+  "achrome": false,
+  "cmykValue": "cmyk(100,0,0,0)",
+  "colorName": "Cyan",
+  "hexCode": "#00ffff",
+  "hslCode": "hsl(180, 100, 50)",
+  "hsvCode": "hsv(180, 100, 50)",
+  "rgbCode": "rgb(0,255,255)",
+  "seedHexCode": "#FFFFFF"
+}
+
+### PUT - Replace object entirely
+PUT http://localhost:8080/api/generated-palettes/1
+Content-Type: application/json
+
+{
+  "achrome": true,
+  "cmykValue": "cmyk(0,0,0,50)",
+  "colorName": "Grey",
+  "hexCode": "#7e7e7e",
+  "hslCode": "hsl(0, 0, 50)",
+  "hsvCode": "hsv(0, 0, 50)",
+  "rgbCode": "rgb(126,126,126)",
+  "seedHexCode": "#EEEEEE"
+}
+
+### DELETE - Remove Object
+DELETE http://localhost:8080/api/generated-palettes/2
+
+### DELETE - Remove Object > 404
+DELETE http://localhost:8080/api/generated-palettes/2
+
+### PATCH - Toggle achrome bool
+PATCH http://localhost:8080/api/generated-palettes/1/achrome
+
+### GET all elements with Achrome colours
+GET http://localhost:8080/api/generated-palettes?achrome=true

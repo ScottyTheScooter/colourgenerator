@@ -29,6 +29,10 @@ public class GeneratedPaletteService {
         return Optional.ofNullable(store.get(id));
     }
 
+    public Optional<GeneratedPalette> findByAchrome(String achrome) {
+        return Optional.ofNullable(store.get(achrome));
+    }
+
     public GeneratedPalette create(GeneratedPalette entity) {
         Long newId = idGenerator.getAndIncrement();
         entity.setId(newId);
@@ -44,6 +48,17 @@ public class GeneratedPaletteService {
         store.put(id, entity);
         return Optional.of(entity);
     }
+
+    // Toggles achrome status > MUST FIX LATER
+//    public Optional<GeneratedPalette> selectAchrome(Long id) {
+//
+//        if (Optional.ofNullable(store.get(id).isAchrome()) == false) {
+//            entity.setAchrome(true);
+//        } else {
+//            entity.setAchrome(false);
+//        }
+//        return Optional.ofNullable(store.get(id));
+//    }
 
     public boolean delete(Long id) {
         return store.remove(id) != null;
