@@ -32,7 +32,7 @@ public final class GeneratedPaletteMapper {
                 entity.getColorName(),
                 entity.getCmykValue(),
                 entity.getSeedHexCode(),
-                entity.isAchrome()
+                entity.notAchrome()
         );
     }
 
